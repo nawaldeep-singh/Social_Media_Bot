@@ -5,8 +5,9 @@ import os
 import network
 from tkinter import filedialog as dbox
 import shutil as sh
+import clear_temp as ct
 
-temp_resource = "G:/project/automate_NDOfficials/resourses/images"
+temp_resource = (os.getcwd().replace("\\","/"))+"/resources/images"
 
 def MediaBot(credentials):
     for media_info in credentials:
@@ -18,8 +19,8 @@ def MediaBot(credentials):
                 clif.dot()
                 print("Logging in to Instagram",end="")
                 clif.dot()
-                #ibot = Bot()
-                #ibot.login(username = media_info[1],password = media_info[2])
+                ibot = Bot()
+                ibot.login(username = media_info[1],password = media_info[2])
                 print("What operation you want to do ?")
                 ilist = op.getinsta()
 
@@ -39,16 +40,21 @@ def MediaBot(credentials):
 
                             file_path = temp_resource + "/" + file[-1]
                             print("file path : ",file_path)
-                            #ibot.upload_photo(file_path)
+                            ibot.upload_photo(file_path)
 
                             #------------------------------------
                             #file_path = file_path + ".REMOVE_ME"
                             #-------------------------------------
                             print("temp res. dir = ",temp_resource)
-                            os.remove(temp_resource)
-                            sh.rmtree("G:/project/automate_NDOfficials/__pycache__",ignore_errors=True)
-                            sh.rmtree("G:/project/automate_NDOfficials/config",ignore_errors=True)
+                            ct.clr_dir(temp_resource)
+                            #sh.rmtree((os.getcwd().replace("\\","/"))+'/__pycache__',ignore_errors=True)
+                            #sh.rmtree((os.getcwd().replace("\\","/"))+'/config',ignore_errors=True)
+                            try:
+                                ct.clr_dir((os.getcwd().replace("\\","/"))+'/__pycache__')
+                                ct.clr_dir((os.getcwd().replace("\\","/"))+'/config')
                             
+                            except:
+                                return
                             
                             
                 #idict = {1 : "ibot.upload_photo()", 2 : "upload_story_photo", 3 : 
