@@ -1,1 +1,5 @@
+Main file : Social Assistent.py
+
+This project currently supports CLI based bot for instagram pic uploader
+
 This project is under development by Nawaldeep Singh...
