@@ -40,7 +40,8 @@ def MediaBot(credentials):
 
                             file_path = temp_resource + "/" + file[-1]
                             print("file path : ",file_path)
-                            ibot.upload_photo(file_path)
+                            cap = input("Enter the caption : ")
+                            ibot.upload_photo(file_path, caption = cap)
 
                             #------------------------------------
                             #file_path = file_path + ".REMOVE_ME"
