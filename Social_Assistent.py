@@ -150,9 +150,10 @@ while start == True:
             if restart != True:      
                 choice = input(f"""\nDo you want to use \"{workspace.capitalize()}\" workspace ?
                 \n -> 'y' to 'USE THIS WORKSPACE'
-                \n -> 'o' to 'OVERWRITE'
+                \n -> 'o' to 'OVERWRITE WORKSPACE'
+                \n -> 'd' to 'DELETE WORKSPACE'
                 \n -> 'e' to 'EXIT'
-                \n Choice (y/o/e) : """).lower()
+                \n Choice (y/o/d/e) : """).lower()
                 print()
             restart = False
 
@@ -175,6 +176,14 @@ while start == True:
 
                 dbs.overwrite(workspace, plist)
                 clearConsole()
+                restart = True
+                print(f"restarting \"{workspace.capitalize()}\" Workspace",end="")
+                clif.dot(value = 3, sec = 0.4)
+                choice = 'y'
+                clearConsole()
+
+            elif choice == 'd' or choice == 'delete':
+                dbs.delete_ws(workspace)
                 restart = True
                 print(f"restarting \"{workspace.capitalize()}\" Workspace",end="")
                 clif.dot(value = 3, sec = 0.4)

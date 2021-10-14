@@ -102,8 +102,20 @@ def get_platforms(workspace_name):
     return platform
 
 def delete_ws(workspace):
-    obj.execute(f"delete from platforms where workspaces = '{workspace}'; ")
-    obj.commit()
+    if workspace != 'insta':
+        obj.execute(f"delete from platforms where workspaces = '{workspace}'; ")
+        obj.commit()
+    
+    else:
+        print(f"You cannot delete prebuild workspace : {workspace}")
+        ch = input("Do you want to reset all workspaces ? (y for yes else no) : ").lower()
+
+        if ch == 'y' or ch=='yes':
+            delete_all_ws()
+
+        else:
+            return
+
 
 def delete_all_ws():
     os.startfile("repair.py")
