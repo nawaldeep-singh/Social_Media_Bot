@@ -52,6 +52,7 @@ def MediaBot(credentials):
                             #sh.rmtree((os.getcwd().replace("\\","/"))+'/config',ignore_errors=True)
                             try:
                                 ct.clr_dir((os.getcwd().replace("\\","/"))+'/__pycache__')
+                                ct.clr_dir((os.getcwd().replace("\\","/"))+'/config/log')
                                 ct.clr_dir((os.getcwd().replace("\\","/"))+'/config')
                             
                             except:
