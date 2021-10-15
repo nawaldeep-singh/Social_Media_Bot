@@ -32,9 +32,9 @@ def MediaBot(credentials):
                     if '1' in opr:
                         count = int(input("How many Pics you want to upload ? : "))
                         for i in range(0,count):
-                            print("Select Image",end=" ")
+                            print(f"Select Image {i+1}",end=" ")
                             clif.dot()
-                            path = dbox.askopenfilename(initialdir=os.getcwd(), title='Select Photo', filetypes= ( ('JPEG File', '*.jpg'), ('All Files', '*.*') ) )
+                            path = dbox.askopenfilename(initialdir=os.getcwd(), title='Select Photo', filetypes= ( ('JPEG File', '*.jpg'),('PNG File', '*.png'),('BMP File', '*.bmp'),('RAW File', '*.nef'), ('All Files', '*.*') ) )
                             sh.copy(path,temp_resource)
                             file = path.split("/")
 
@@ -44,7 +44,7 @@ def MediaBot(credentials):
                             ibot.upload_photo(file_path, caption = cap)
 
                             #------------------------------------
-                            #file_path = file_path + ".REMOVE_ME"
+                            #file_path = file_path + ".REMOVE_ME"  # not a good idea 
                             #-------------------------------------
                             print("temp res. dir = ",temp_resource)
                             ct.clr_dir(temp_resource)
@@ -66,9 +66,9 @@ def MediaBot(credentials):
 
             
         elif media_info[0].lower() == "whatsapp":
-            print("wahtsapp")
+            print("wahtsapp not supported")
             pass
-
+                
 
         else:
             print("""Some technical issue occur...

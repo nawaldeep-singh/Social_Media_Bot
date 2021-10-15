@@ -15,7 +15,7 @@ def getinsta():
     ilist = input("Enter the respective numbers (seprated by \",\") : ").split(",")
     ilist.sort()
     for num in ilist:
-        if ilist.count(num)>1:
+        if (ilist.count(num)>1) or (num < 1 or num > 6): #deleting the dublicate or invalid values
             ilist.remove(num)
 
     return ilist
