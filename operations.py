@@ -34,4 +34,3 @@ def gettwitter():
     2 : Follow Someone
     3 : Like photo(s) 
     """)
-

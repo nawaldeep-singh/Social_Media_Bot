@@ -5,6 +5,7 @@ import db_space as dbs
 import time
 import cli_format as clif
 import os
+import getpass as gp
 #------------------------------------------------------------->>>>
 
 #--------------------Functions-------------------------------->>>>
@@ -75,7 +76,8 @@ try:
                     print(f"Logging in to {social_media}",end="")
                     clif.dot()
                     print(f"\nLogin ID : {login_details[0]}")
-                    password = input("Enter your password : ").replace(" ","")
+                    password = gp.getpass("Enter the password securely : ")
+                    #password = input("Enter your password : ").replace(" ","")
                     login_data.append(password)
 
                     choice = input("Do you want to save password securely? (y for 'yes' else 'no') : ").lower()
@@ -184,11 +186,7 @@ while start == True:
 
             elif choice == 'd' or choice == 'delete':
                 dbs.delete_ws(workspace)
-                restart = True
-                print(f"restarting \"{workspace.capitalize()}\" Workspace",end="")
-                clif.dot(value = 3, sec = 0.4)
-                choice = 'y'
-                clearConsole()
+                exit()
 
 
             elif choice == 'e' or choice == 'exit':

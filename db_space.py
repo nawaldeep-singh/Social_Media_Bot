@@ -112,9 +112,11 @@ def delete_ws(workspace):
 
         if ch == 'y' or ch=='yes':
             delete_all_ws()
+            print("All workspaces are set to default...")
 
         else:
-            return
+            print("Please start the program again...")
+            exit()
 
 
 def delete_all_ws():
