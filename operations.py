@@ -18,7 +18,7 @@ def getinsta():
         if (ilist.count(num)>1) or (num < 1 or num > 6): #deleting the dublicate or invalid values
             ilist.remove(num)
 
-    return ilist
+    return ilist #returning ilist to media bot
     
 
 def getfb():

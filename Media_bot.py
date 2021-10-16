@@ -57,6 +57,9 @@ def MediaBot(credentials):
                             
                             except:
                                 return
+
+                    elif '2' in opr:
+                        pass
                             
                             
                 #idict = {1 : "ibot.upload_photo()", 2 : "upload_story_photo", 3 : 
