@@ -32,8 +32,13 @@ def MediaBot(credentials):
                     if '1' in opr:
                         count = int(input("How many Pics you want to upload ? : "))
                         for i in range(0,count):
-                            print(f"Select Image {i+1}",end=" ")
-                            clif.dot()
+                            if count == 1:
+                                print(f"Select Image ",end=" ")
+                                clif.dot()
+                            else:
+                                print(f"Select Image {i+1}",end=" ")
+                                clif.dot()
+
                             path = dbox.askopenfilename(initialdir=os.getcwd(), title='Select Photo', filetypes= ( ('JPEG File', '*.jpg'),('PNG File', '*.png'),('BMP File', '*.bmp'),('RAW File', '*.nef'), ('All Files', '*.*') ) )
                             sh.copy(path,temp_resource)
                             file = path.split("/")
@@ -59,6 +64,13 @@ def MediaBot(credentials):
                                 return
 
                     elif '2' in opr:
+                        print("This option is not available yet",end="")
+                        clif.dot()
+                        pass
+
+                    elif '3' in opr:
+                        print("This option is not available yet",end="")
+                        clif.dot()
                         pass
                             
                             
