@@ -1,4 +1,7 @@
 import cli_format as clif
+from tkinter import filedialog as dbox
+import shutil as sh
+import os
 
 def getinsta():
     print("Retrieving Instagram Operations",end="")
@@ -34,3 +37,11 @@ def gettwitter():
     2 : Follow Someone
     3 : Like photo(s) 
     """)
+
+def open_file():
+    temp_resource = (os.getcwd().replace("\\","/"))+"/resources/images"
+    path = dbox.askopenfilename(initialdir=os.getcwd(), title='Select Photo', filetypes= ( ('JPEG File', '*.jpg'),('PNG File', '*.png'),('BMP File', '*.bmp'),('RAW File', '*.nef'), ('All Files', '*.*') ) )
+    sh.copy(path,temp_resource)
+    file = path.split("/")
+    file_path = temp_resource + "/" + file[-1]
+    return file_path

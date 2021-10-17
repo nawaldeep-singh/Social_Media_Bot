@@ -3,11 +3,10 @@ import operations as op
 import cli_format as clif
 import os
 import network
-from tkinter import filedialog as dbox
 import shutil as sh
 import clear_temp as ct
 
-temp_resource = (os.getcwd().replace("\\","/"))+"/resources/images"
+
 
 def MediaBot(credentials):
     for media_info in credentials:
@@ -28,6 +27,8 @@ def MediaBot(credentials):
                 print(ilist)
                 #-------remove afterwords---------
 
+                temp_resource = (os.getcwd().replace("\\","/"))+"/resources/images"
+                
                 for opr in ilist:
                     if '1' in opr:
                         count = int(input("How many Pics you want to upload ? : "))
@@ -39,11 +40,7 @@ def MediaBot(credentials):
                                 print(f"Select Image {i+1}",end=" ")
                                 clif.dot()
 
-                            path = dbox.askopenfilename(initialdir=os.getcwd(), title='Select Photo', filetypes= ( ('JPEG File', '*.jpg'),('PNG File', '*.png'),('BMP File', '*.bmp'),('RAW File', '*.nef'), ('All Files', '*.*') ) )
-                            sh.copy(path,temp_resource)
-                            file = path.split("/")
-
-                            file_path = temp_resource + "/" + file[-1]
+                            file_path = op.open_file()
                             print("file path : ",file_path)
                             cap = input("Enter the caption : ")
                             ibot.upload_photo(file_path, caption = cap)
@@ -53,20 +50,31 @@ def MediaBot(credentials):
                             #-------------------------------------
                             print("temp res. dir = ",temp_resource)
                             ct.clr_dir(temp_resource)
-                            #sh.rmtree((os.getcwd().replace("\\","/"))+'/__pycache__',ignore_errors=True)
-                            #sh.rmtree((os.getcwd().replace("\\","/"))+'/config',ignore_errors=True)
+                            
                             try:
                                 ct.clr_dir((os.getcwd().replace("\\","/"))+'/__pycache__')
                                 ct.clr_dir((os.getcwd().replace("\\","/"))+'/config/log')
                                 ct.clr_dir((os.getcwd().replace("\\","/"))+'/config')
                             
                             except:
-                                return
+                                sh.rmtree((os.getcwd().replace("\\","/"))+'/__pycache__',ignore_errors=True)
+                                sh.rmtree((os.getcwd().replace("\\","/"))+'/config',ignore_errors=True)
+                                sh.rmtree((os.getcwd().replace("\\","/"))+'/config/log',ignore_errors=True)
+                                
 
                     elif '2' in opr:
-                        print("This option is not available yet",end="")
-                        clif.dot()
-                        pass
+                        count = int(input("Enter the number of stories you want to post ? : "))
+                        
+                        for i in range(0,count):
+                            if count == 1:
+                                print(f"Select Image ",end=" ")
+                                clif.dot()
+                            else:
+                                print(f"Select Image {i+1}",end=" ")
+                                clif.dot()
+
+                            file_path = op.open_file()
+                            ibot.upload_story_photo(file_path)
 
                     elif '3' in opr:
                         print("This option is not available yet",end="")
